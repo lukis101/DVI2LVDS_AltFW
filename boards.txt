@@ -1,0 +1,21 @@
+
+opti8.name=328p@8M Optiboot 38400B
+
+opti8.upload.tool=arduino:avrdude
+opti8.upload.protocol=arduino
+opti8.upload.maximum_size=32256
+opti8.upload.maximum_data_size=2048
+opti8.upload.speed=38400
+
+opti8.bootloader.tool=avrdude
+opti8.bootloader.low_fuses=0xE2
+opti8.bootloader.high_fuses=0xDC
+opti8.bootloader.extended_fuses=0xFD
+opti8.bootloader.unlock_bits=0x3F
+opti8.bootloader.lock_bits=0x0F
+
+opti8.build.mcu=atmega328p
+opti8.build.f_cpu=8000000L
+opti8.build.board=arduino:AVR_UNO
+opti8.build.core=arduino:arduino
+opti8.build.variant=arduino:standard
