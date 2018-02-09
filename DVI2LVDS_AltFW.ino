@@ -85,11 +85,18 @@ typedef enum {
 } serMode_t;
 serMode_t serMode = NORMAL_HIZ;
 
-#define PIXEL_ORDER_SEQUENTIAL 0
-#define PIXEL_ORDER_LEFTRIGHT  1
+#define PIXEL_ORDER_SEQUENTIAL 1
+#define PIXEL_ORDER_LEFTRIGHT  2
 
-#define LVDS_SWING_LEVEL_LOW   0
-#define LVDS_SWING_LEVEL_HIGH  1
+#define LVDS_SWING_LEVEL_LOW   1
+#define LVDS_SWING_LEVEL_HIGH  2
+
+#define PWM_PRESCALER_1   ((0<<CS22) | (0<<CS21) | (1<<CS20))
+#define PWM_PRESCALER_8   ((0<<CS22) | (1<<CS21) | (0<<CS20))
+#define PWM_PRESCALER_32  ((0<<CS22) | (1<<CS21) | (1<<CS20))
+#define PWM_PRESCALER_64  ((1<<CS22) | (0<<CS21) | (0<<CS20))
+#define PWM_PRESCALER_128 ((1<<CS22) | (0<<CS21) | (1<<CS20))
+#define PWM_PRESCALER_256 ((1<<CS22) | (1<<CS21) | (0<<CS20))
 
 /// --- UTILS --- ///
 bool checkPower(void);

@@ -22,12 +22,12 @@ void setup() // MCU powered through video cable
     pinMode(PIN_BTN_B,   INPUT_PULLUP);
 
     pinMode(PIN_EPMI_ORDER, OUTPUT);
-#if (PIXEL_ORDERING == PIXEL_ORDERING_LEFTRIGHT)
+#if (PIXEL_ORDER == PIXEL_ORDER_LEFTRIGHT)
     digitalWrite(PIN_EPMI_ORDER, HIGH);
-#elif (PIXEL_ORDERING == PIXEL_ORDER_SEQUENTIAL)
+#elif (PIXEL_ORDER == PIXEL_ORDER_SEQUENTIAL)
     //digitalWrite(PIN_EPMI_ORDER, LOW); // Low by default on AVR
 #else
-    #error Bad PIXEL_ORDERING definition
+    #error Bad PIXEL_ORDER definition
 #endif
 
     pinMode(PIN_EPMI_SWING, OUTPUT);

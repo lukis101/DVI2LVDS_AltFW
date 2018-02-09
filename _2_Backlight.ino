@@ -25,7 +25,11 @@ void BL_Init(void)
 
     // PWM
     TCCR2B = 0; // stop timer
-    TCCR2A = ((!BL_HALFFREQ)<<WGM21) | (1<<WGM20); // fast or phase-correct pwm
+#ifdef BL_HALFFREQ
+    TCCR2A = (1<<WGM20); // phase-correct pwm
+#else
+    TCCR2A = (1<<WGM21) | (1<<WGM20); // fast pwm
+#endif
     TCNT2 = 0;
 
     pinMode(PIN_BL_ON,  OUTPUT);
@@ -76,7 +80,7 @@ void BLStartPWM(void)
     OCR2B = UserConfig.brightness;
     CONNECT_PWM_PIN();
     TCNT2 = 0;
-    TCCR2B = TIM2_PRESCALE; // start PWM timer
+    TCCR2B = PWM_PRESCALER; // start PWM timer
 }
 void BLStopPWM(void)
 {
@@ -112,6 +116,7 @@ void BL_TurnOn(void)
     PORTD |= (1<<3); // 100% duty cycle warmup
     bl_warmup = true;
     bl_warmupstart = millis();
+    Serial.write("BL warmup\n");
 #else
     BLStart();
 #endif
